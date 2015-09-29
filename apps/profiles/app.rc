@@ -1,0 +1,9 @@
+fn conf_enable_profiles {
+    conf_enable_app profiles
+}
+
+fn profiles_init {
+    if(~ $req_path /user/* && ! ~ $req_path /user/ && test -d etc/users/`{basename $req_path}) {
+        handler_body_main=(tpl_handler `{get_lib_file profiles/profile.tpl apps/profiles/profile.tpl})
+    }
+}

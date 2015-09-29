@@ -1,0 +1,155 @@
+@font-face {
+  font-family: "Material Icons";
+  font-style: normal;
+  font-weight: 400;
+  src: url(/_werc/font/material-design-icons/MaterialIcons-Regular.eot); /* For IE6-8 */
+  src: local("Material Icons"),
+       local("MaterialIcons-Regular"),
+       url(/_werc/font/material-design-icons/MaterialIcons-Regular.woff2) format("woff2"),
+       url(/_werc/font/material-design-icons/MaterialIcons-Regular.woff) format("woff"),
+       url(/_werc/font/material-design-icons/MaterialIcons-Regular.ttf) format("truetype");
+}
+
+.material-icons {
+  font-family: "Material Icons";
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;  /* Preferred icon size */
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+
+  /* Support for all WebKit browsers. */
+  -webkit-font-smoothing: antialiased;
+  /* Support for Safari and Chrome. */
+  text-rendering: optimizeLegibility;
+
+  /* Support for Firefox. */
+  -moz-osx-font-smoothing: grayscale;
+
+  /* Support for IE. */
+  font-feature-settings: "liga";
+}
+
+nav ul li {
+  text-transform: uppercase;
+  list-style-type: none;
+}
+
+.galleryimg:nth-child(3n+1) {
+  clear: left;
+}
+
+#main-copy h4 {
+  margin-top: 2em;
+}
+#main-copy h4:nth-child(2) {
+  margin-top: initial;
+}
+
+#main-copy a {
+  color: #000;
+}
+#main-copy a:hover {
+  color: #039be5;
+}
+
+select:focus {
+  outline: 1px solid #FF9800;
+}
+input[type="text"]:focus:not([readonly]), input[type="password"]:focus:not([readonly]), input[type="email"]:focus:not([readonly]), input[type="url"]:focus:not([readonly]), input[type="time"]:focus:not([readonly]), input[type="date"]:focus:not([readonly]), input[type="datetime-local"]:focus:not([readonly]), input[type="tel"]:focus:not([readonly]), input[type="number"]:focus:not([readonly]), input[type="search"]:focus:not([readonly]), textarea.materialize-textarea:focus:not([readonly]) {
+  border-bottom: 1px solid #FF9800;
+  box-shadow: 0px 1px 0px 0px #FF9800;
+}
+input[type="text"]:focus:not([readonly]) + label, input[type="password"]:focus:not([readonly]) + label, input[type="email"]:focus:not([readonly]) + label, input[type="url"]:focus:not([readonly]) + label, input[type="time"]:focus:not([readonly]) + label, input[type="date"]:focus:not([readonly]) + label, input[type="datetime-local"]:focus:not([readonly]) + label, input[type="tel"]:focus:not([readonly]) + label, input[type="number"]:focus:not([readonly]) + label, input[type="search"]:focus:not([readonly]) + label, textarea.materialize-textarea:focus:not([readonly]) + label {
+  color: #FF9800;
+}
+.dropdown-content li > a, .dropdown-content li > span {
+  color: #FF9800;
+}
+
+input.select-dropdown {
+  margin-bottom: 2em !important;
+}
+
+ul.select-dropdown {
+  z-index: 99;
+}
+
+blockquote {
+  border-left: 5px solid #03a9f4;
+}
+
+.page-footer {
+  padding-top: 4em !important;
+  padding-bottom: 4em;
+}
+
+.footer-copyright {
+  background-color: inherit !important;
+}
+
+.btn-large {
+  margin-bottom: 0.5em;
+  margin-right: 0.25em;
+}
+
+.inblock {
+  display: inline-block;
+  margin-right: 4em;
+}
+
+.inblock .material-icons {
+  display: inline-block;
+  margin-right: 1em;
+}
+
+.inblock ul {
+  display: inline-block;
+}
+
+.avatar {
+  height: 1.5em;
+  width: auto !important;
+  margin: 0 1em 0 0 !important;
+  border-radius: 50%;
+}
+
+.comment {
+  margin-bottom: 2em;
+}
+.comment:last-child {
+  margin-bottom: initial;
+}
+
+.chip {
+  display: inline-block;
+  height: 32px;
+  font-size: 13px;
+  font-weight: 500;
+  color: rgba(0, 0, 0, 0.6);
+  line-height: 32px;
+  padding: 0px 12px;
+  border-radius: 16px;
+  background-color: #E4E4E4;
+}
+
+.thingiview {
+  width: 100%;
+}
+
+.btnLink {
+  background: none !important;
+  border: none;
+  padding: 0 !important;
+  font: inherit;
+  cursor: pointer;
+}
+
+.materialboxed {
+  width: 100%;
+}

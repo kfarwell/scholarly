@@ -1,0 +1,8 @@
+siteTitle='SCHOLARLY'
+siteSubTitle='VISUAL PEDAGOGY'
+
+sideBarNavTitle='Thread List'
+conf_hide_paths img about search up
+
+conf_enable_register
+conf_enable_profiles

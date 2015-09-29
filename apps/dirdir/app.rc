@@ -1,0 +1,70 @@
+fn conf_enable_wiki {
+    enable_wiki=yes
+    wiki_editors_groups=$* 
+    conf_enable_app dirdir
+}
+
+fn dirdir_init {
+    if(! ~ $#enable_wiki 0) {
+        lp=$local_path
+        dirdir_file=$lp.html
+        dirdir_dir=$dirdir_file^'_werc/dirdir/'
+        if(! ~ '' $"post_arg_name $"post_arg_type $"post_arg_year0 $"post_arg_year1 $"post_arg_school $"post_arg_teacher)
+            save_page
+    }
+}
+
+fn save_page {
+    lp=`{echo $local_path | sed 's/index$//'}^`{echo $post_arg_name | sed 's,[^A-Za-z0-9],_,g; s,__*,_,g'}
+    dirdir_file=$lp.html
+    if(! test -f $dirdir_file && ~ `{echo $dirdir_file | tr -dc '/' | wc -c} 3) {
+        dirdir_dir=$dirdir_file^'_werc/dirdir/'
+        dirdir_verdir=$dirdir_dir/^`{date -n}^/
+        mkdir -p $dirdir_verdir
+        umask 002
+
+        # XXX Use a tmp file and  mv(1) to ensure updates are atomic?
+        echo $logged_user > $dirdir_verdir/author
+
+	echo $post_arg_name > $dirdir_verdir/name
+	echo $post_arg_type > $dirdir_verdir/type
+	echo $post_arg_year0 > $dirdir_verdir/year0
+	echo $post_arg_year1 > $dirdir_verdir/year1
+	echo $post_arg_school > $dirdir_verdir/school
+	echo $post_arg_teacher > $dirdir_verdir/teacher
+	if(! ~ '' $"post_arg_tags) echo $post_arg_tags | sed 's/ /_/g; s/,/ /g; s/ _/ /g; s,[^A-Za-z0-9],_,g; s,__*,_,g' > $dirdir_verdir/tags
+        echo '<h2><a href="/courses/'`{echo $post_arg_name | sed 's,[^A-Za-z0-9],_,g; s,__*,_,g'}'">'$post_arg_name'</a></h2>' > $dirdir_verdir/data
+
+        echo '<span class="inblock"><i class="material-icons">list</i><ul>' >> $dirdir_verdir/data
+        echo '<li><a href="/search?year0='$post_arg_year0'">'$post_arg_year0' Courses</a></li>' >> $dirdir_verdir/data
+        echo '<li><a href="/search?year1='$post_arg_year1'">'$post_arg_year1' Courses</a></li>' >> $dirdir_verdir/data
+        echo '<li><a href="/search?type='$post_arg_type'">'$post_arg_type' Courses</a></li>' | sed 's/_/ /g' >> $dirdir_verdir/data
+        echo '<li><a href="/search?school='$post_arg_school'">'$post_arg_school' Courses</a></li>' >> $dirdir_verdir/data
+        echo '</ul></span>' >> $dirdir_verdir/data
+
+        echo '<span class="inblock"><a href="/user/'$logged_user'"><img class="avatar" src="https://secure.gravatar.com/avatar/'`{cat etc/users/$logged_user/email | tr -d $NEW_LINE | md5sum}'" />'$logged_user'</a></span>' >> $dirdir_verdir/data
+
+        echo '<span class="inblock"><i class="material-icons">schedule</i>' >> $dirdir_verdir/data
+        echo `{date} >> $dirdir_verdir/data
+        echo '</span><br />' >> $dirdir_verdir/data
+
+
+        if(! ~ '' $"post_arg_tags) {
+            tags=`{echo $post_arg_tags | sed 's/ /_/g; s/,/ /g; s/ _/ /g'}
+            for(i in $tags)
+                echo '<div class="chip"><a href="/search?tag='$i'">'$i'</a></div>' >> $dirdir_verdir/data
+        }
+
+        echo '<br /><br /><div class="addthis_sharing_toolbox"></div>' >> $dirdir_verdir/data
+
+        echo >> $dirdir_verdir/data
+
+        cp $dirdir_verdir/data $dirdir_file
+
+        # make index find courses without comments
+        mkdir -p $lp^_werc/
+
+        post_redirect $base_url^$req_path^`{echo $post_arg_name | sed 's,[^A-Za-z0-9],_,g; s,__*,_,g'}
+        #notify_notes='Posted <a href="'$"req_path'">'$"req_path'</a>!'
+    }
+}

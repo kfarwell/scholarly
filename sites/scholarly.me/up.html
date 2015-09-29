@@ -1,0 +1,27 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <link rel="stylesheet" href="/_werc/pub/materialize.min.css" media="screen,projection" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+    <link rel="stylesheet" href="/_werc/pub/style.css" type="text/css" media="screen" title="default">
+
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+</head>
+<body style="overflow: hidden">
+<form action="api.php?d=upload" method="post" enctype="multipart/form-data">
+    <input type="hidden" name="MAX_FILE_SIZE" value="150000000" />
+
+    <p><div class="input-field file-field">
+        <div class="btn black"><span>File</span><input type="file" name="file" id="file" /></div>
+        <div class="file-path-wrapper"><input disabled class="file-path" type="text" spellcheck="false"></div>
+    </div>
+
+    <button type="submit" class="btn-flat waves-effect waves-dark white">Upload</button></p>
+</form>
+
+<script type="text/javascript" src="/_werc/js/jquery-2.1.1.min.js"></script>
+<script type="text/javascript" src="/_werc/js/materialize.min.js"></script>
+</body>
+</html>
