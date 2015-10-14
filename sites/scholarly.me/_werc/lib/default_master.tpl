@@ -1,22 +1,86 @@
 % masterSiteTitle=`{cat sites/*/_werc/config | grep siteTitle | cut -d'''' -f 2}
 
+<ul id="dd-types" class="dropdown-content">
+% for(i in `{ls $sitedir/_werc/search/type | sed $dirfilter}) {
+%   i=`{basename $i}
+  <li><a><form action="/search" method="post"><input type="hidden" name="type" value="type"></input><input type="hidden" name="value" value="%($i%)"></input><input type="submit" value="%(`{echo $i | sed 's/_/ /g'}%)" class="fakelinknav"></input></form></a></li>
+% }
+</ul>
+
+<ul id="dd-years" class="dropdown-content">
+% for(i in `{ls $sitedir/_werc/search/year0 | sed $dirfilter}) {
+%   i=`{basename $i}
+  <li><a><form action="/search" method="post"><input type="hidden" name="type" value="year0"></input><input type="hidden" name="value" value="%($i%)"></input><input type="submit" value="%(`{echo $i | sed 's/_/ /g'}%)" class="fakelinknav"></input></form></a></li>
+% }
+  <li class="divider"></li>
+% for(i in `{ls $sitedir/_werc/search/year1 | sed $dirfilter}) {
+%   i=`{basename $i}
+  <li><a><form action="/search" method="post"><input type="hidden" name="type" value="year1"></input><input type="hidden" name="value" value="%($i%)"></input><input type="submit" value="%(`{echo $i | sed 's/_/ /g'}%)" class="fakelinknav"></input></form></a></li>
+% }
+</ul>
+
+<ul id="dd-schools" class="dropdown-content">
+% for(i in `{ls $sitedir/_werc/search/school | sed $dirfilter}) {
+%   i=`{basename $i}
+  <li><a><form action="/search" method="post"><input type="hidden" name="type" value="school"></input><input type="hidden" name="value" value="%($i%)"></input><input type="submit" value="%(`{echo $i | sed 's/_/ /g'}%)" class="fakelinknav"></input></form></a></li>
+% }
+</ul>
+
+<ul id="dd-teachers" class="dropdown-content">
+% for(i in `{ls $sitedir/_werc/search/teacher | sed $dirfilter}) {
+%   i=`{basename $i}
+  <li><a><form action="/search" method="post"><input type="hidden" name="type" value="teacher"></input><input type="hidden" name="value" value="%($i%)"></input><input type="submit" value="%(`{echo $i | sed 's/_/ /g'}%)" class="fakelinknav"></input></form></a></li>
+% }
+</ul>
+
+<ul id="ddm-types" class="dropdown-content">
+% for(i in `{ls $sitedir/_werc/search/type | sed $dirfilter}) {
+%   i=`{basename $i}
+  <li><a><form action="/search" method="post"><input type="hidden" name="type" value="type"></input><input type="hidden" name="value" value="%($i%)"></input><input type="submit" value="%(`{echo $i | sed 's/_/ /g'}%)" class="fakelinknav"></input></form></a></li>
+% }
+</ul>
+
+<ul id="ddm-years" class="dropdown-content">
+% for(i in `{ls $sitedir/_werc/search/year0 | sed $dirfilter}) {
+%   i=`{basename $i}
+  <li><a><form action="/search" method="post"><input type="hidden" name="type" value="year0"></input><input type="hidden" name="value" value="%($i%)"></input><input type="submit" value="%(`{echo $i | sed 's/_/ /g'}%)" class="fakelinknav"></input></form></a></li>
+% }
+  <li class="divider"></li>
+% for(i in `{ls $sitedir/_werc/search/year1 | sed $dirfilter}) {
+%   i=`{basename $i}
+  <li><a><form action="/search" method="post"><input type="hidden" name="type" value="year1"></input><input type="hidden" name="value" value="%($i%)"></input><input type="submit" value="%(`{echo $i | sed 's/_/ /g'}%)" class="fakelinknav"></input></form></a></li>
+% }
+</ul>
+
+<ul id="ddm-schools" class="dropdown-content">
+% for(i in `{ls $sitedir/_werc/search/school | sed $dirfilter}) {
+%   i=`{basename $i}
+  <li><a><form action="/search" method="post"><input type="hidden" name="type" value="school"></input><input type="hidden" name="value" value="%($i%)"></input><input type="submit" value="%(`{echo $i | sed 's/_/ /g'}%)" class="fakelinknav"></input></form></a></li>
+% }
+</ul>
+
+<ul id="ddm-teachers" class="dropdown-content">
+% for(i in `{ls $sitedir/_werc/search/teacher | sed $dirfilter}) {
+%   i=`{basename $i}
+  <li><a><form action="/search" method="post"><input type="hidden" name="type" value="teacher"></input><input type="hidden" name="value" value="%($i%)"></input><input type="submit" value="%(`{echo $i | sed 's/_/ /g'}%)" class="fakelinknav"></input></form></a></li>
+% }
+</ul>
+
 <nav class="white" role="navigation">
   <div class="nav-wrapper container">
-    <a id="logo-container" href="/" class="brand-logo orange-text">%($siteTitle%)</a>
+    <a id="logo-container" href="/courses/" class="brand-logo orange-text">%($siteTitle%)</a>
     <ul class="right hide-on-med-and-down">
-        <li><a href="/about" class="black-text">ABOUT</a></li>
-        <li style="margin-right: 2em"><a href="/courses/" class="black-text">COURSES</a></li>
-% #        <li><a onclick="navigator.id.request()" class="black-text">LOGIN</a></li>
-        <li><a href="/login" class="black-text">LOGIN</a></li>
-        <li><a href="/register" class="black-text">REGISTER</a></li>
+      <li><a class="dropdown-button black-text" href="#!" data-activates="dd-types">Types</a></li>
+      <li><a class="dropdown-button black-text" href="#!" data-activates="dd-years">Years</a></li>
+      <li><a class="dropdown-button black-text" href="#!" data-activates="dd-schools">Schools</a></li>
+      <li><a class="dropdown-button black-text" href="#!" data-activates="dd-teachers">Teachers</a></li>
     </ul>
 
     <ul id="nav-mobile" class="side-nav">
-        <li><a href="/about">ABOUT</a></li>
-        <li style="margin-bottom: 2em"><a href="/courses/">COURSES</a></li>
-% #        <li><a onclick="navigator.id.request()">LOG IN</a></li>
-        <li><a href="/login">LOGIN</a></li>
-        <li><a href="/register">REGISTER</a></li>
+      <li><a class="dropdown-button black-text" href="#!" data-activates="ddm-types">Types</a></li>
+      <li><a class="dropdown-button black-text" href="#!" data-activates="ddm-years">Years</a></li>
+      <li><a class="dropdown-button black-text" href="#!" data-activates="ddm-schools">Schools</a></li>
+      <li><a class="dropdown-button black-text" href="#!" data-activates="ddm-teachers">Teachers</a></li>
     </ul>
     <a href="#" data-activates="nav-mobile" class="button-collapse black-text"><i class="mdi-navigation-menu"></i></a>
   </div>
@@ -49,12 +113,11 @@
 <footer class="page-footer white">
   <div class="footer-copyright">
     <div class="container">
-      <div class="left black-text">SCHOLARLY.ME</div>
-      <div class="right">
-        <a id="scroll-top" class="btn-flat black-text" href="#top">
-          <i class="large mdi-navigation-expand-less"></i>
-        </a>
-      </div>
+      <span class="black-text">Scholarly</span>
+      <span class="right">
+        <a href="/about" class="black-text">About</a>
+        <a href="/privacy" class="black-text">Privacy</a>
+      </span>
     </div>
   </div>
 </footer>
@@ -94,6 +157,8 @@
 
   $( document ).ready(function() {
     $(".button-collapse").sideNav();
+
+    $(".dropdown-button").dropdown();
 
     $(".materialboxed").materialbox();
 

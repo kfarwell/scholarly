@@ -22,14 +22,14 @@ fn evl {
 % }
 
 <hr><pre>
-% echo sed $dirfilter'/\/[^.\/][^\/]*(\.(md|txt|html)|\/)$/!d; s!^'$sitedir'!!; '$dirclean'1d; s!$!.html!g; s|postnum||'
-% echo
-% echo $dirfilter
-% echo
-% echo $sitedir
-% echo
-% echo $dirclean
-% echo
+search
+<form action="/search" method="post">
+    type <input type="text" name="type"></input>
+    value <input type="text" name="value"></input>
+    tag <input type="text" name="tag"></input>
+    <input type="submit"></input>
+</form><hr />
+
 % env | escape_html
 </pre><hr>
 

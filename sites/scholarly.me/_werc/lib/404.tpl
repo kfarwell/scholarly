@@ -10,6 +10,4 @@
 <script type="text/javascript">
   document.getElementById("goog-wm-sb").style.display = "none";
 </script>
-
-<h4>Or take a look at the <a href="/sitemap">sitemap</a>.</h4>
 <hr>

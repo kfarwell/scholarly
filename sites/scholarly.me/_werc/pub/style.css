@@ -93,6 +93,10 @@ blockquote {
   background-color: inherit !important;
 }
 
+.page-footer .right > * {
+  margin-left: 1em;
+}
+
 .btn-large {
   margin-bottom: 0.5em;
   margin-right: 0.25em;
@@ -152,4 +156,33 @@ blockquote {
 
 .materialboxed {
   width: 100%;
+}
+
+.fakelink {
+  background-color: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+.fakelink:hover {
+  color: #039be5;
+}
+
+.fakelinknav {
+  background-color: transparent;
+  border: none;
+  padding: 1rem 1rem;
+  width: 100%;
+  cursor: pointer;
+}
+.fakelinknav:hover {
+  color: inherit;
+}
+
+.dropdown-content li > a {
+  padding: 0;
+}
+
+.dropdown-content {
+  width: auto !important;
 }
