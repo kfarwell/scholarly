@@ -52,10 +52,10 @@ nav ul li {
 }
 
 #main-copy a {
-  color: #000;
+  color: #039be5;
 }
 #main-copy a:hover {
-  color: #039be5;
+  color: #000;
 }
 
 select:focus {
