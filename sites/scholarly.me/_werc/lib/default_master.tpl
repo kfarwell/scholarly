@@ -74,6 +74,13 @@
       <li><a class="dropdown-button black-text" href="#!" data-activates="dd-years">Years</a></li>
       <li><a class="dropdown-button black-text" href="#!" data-activates="dd-schools">Schools</a></li>
       <li><a class="dropdown-button black-text" href="#!" data-activates="dd-teachers">Teachers</a></li>
+% check_user
+% if(~ $logged_user '') {
+      <li style="margin-left: 2em"><a class="black-text" href="/login">Login</a></li>
+% }
+% if not {
+      <li style="margin-left: 2em"><a class="black-text" href="/user/%($logged_user%)">%($logged_user%)</a></li>
+% }
     </ul>
 
     <ul id="nav-mobile" class="side-nav">
@@ -81,6 +88,12 @@
       <li><a class="dropdown-button black-text" href="#!" data-activates="ddm-years">Years</a></li>
       <li><a class="dropdown-button black-text" href="#!" data-activates="ddm-schools">Schools</a></li>
       <li><a class="dropdown-button black-text" href="#!" data-activates="ddm-teachers">Teachers</a></li>
+% if(~ $logged_user '') {
+      <li style="margin-top: 2em"><a class="black-text" href="/login">Login</a></li>
+% }
+% if not {
+      <li style="margin-top: 2em"><a class="black-text" href="/user/%($logged_user%)">%($logged_user%)</a></li>
+% }
     </ul>
     <a href="#" data-activates="nav-mobile" class="button-collapse black-text"><i class="mdi-navigation-menu"></i></a>
   </div>

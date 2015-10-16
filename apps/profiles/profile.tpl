@@ -1,31 +1,27 @@
 % dir=etc/users/`{basename $req_path}
 
+% check_user
+% if(~ $logged_user `{basename $req_path}) {
+<p><form method="POST" action=""><button name="logout" value="yes" class="btn-large waves-effect waves-light black">Logout</button></form></p>
+% }
+
 <h1>%(`{basename $req_path}%)'s Profile</h1>
 
 %{
-if(test -f $dir/school) {
-    echo '<h4>Student at '
-    cat $dir/school
-    echo '</h4>'
-}
+echo '<h4>'
+cat $dir/school
+echo '</h4>'
 
-if(test -f $dir/courses) {
-    echo '<h5>Taking '
-    cat $dir/courses | tr -d '
+echo '<h5>'
+cat $dir/courses | tr -d '
 '
-    echo '</h5>'
-}
+echo '</h5>'
 
-if(test -f $dir/bio) {
-    echo '<p>'
-    cat $dir/bio
-    echo '</p>'
-}
+echo '<p>'
+cat $dir/bio
+echo '</p>'
 
-if(test -s $dir/work) {
-    echo '<h2>Shared Work</h2>'
-    echo '<ul>'
-    cat $dir/work
-    echo '</ul>'
-}
+echo '<ul>'
+cat $dir/work
+echo '</ul>'
 %}

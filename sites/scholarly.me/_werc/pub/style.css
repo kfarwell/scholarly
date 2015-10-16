@@ -65,6 +65,13 @@ nav ul li {
   color: #000;
 }
 
+.btn-flat {
+  color: #000 !important;
+}
+.btn-flat:hover {
+  color: #039be5 !important;
+}
+
 select:focus {
   outline: 1px solid #FF9800;
 }
