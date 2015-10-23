@@ -8,13 +8,20 @@ fn register_init {
 
         if(validate_new_user $"post_arg_register_user $post_arg_register_passwd $post_arg_register_passwd2 && ! ~ $#post_arg_register_email 0) {
             mkdir etc/users/$post_arg_register_user
+
             salt=`{cat /dev/urandom | tr -dc 'a-zA-Z' | fold -w 64 | head -n 1}
             echo -n $post_arg_register_passwd$salt | sha256sum | sed 's/  -$//' > etc/users/$post_arg_register_user/password
             echo $salt > etc/users/$post_arg_register_user/salt
+
             echo $post_arg_register_email | escape_html > etc/users/$post_arg_register_user/email
             echo $post_arg_register_school | escape_html > etc/users/$post_arg_register_user/school
+
+            echo $post_arg_register_courses > etc/users/$post_arg_register_user/courses.md
             echo $post_arg_register_courses | escape_html | sed 's,$,<br />,' > etc/users/$post_arg_register_user/courses
+
+            echo $post_arg_register_bio > etc/users/$post_arg_register_user/bio.md
             echo $post_arg_register_bio | $formatter > etc/users/$post_arg_register_user/bio
+
             touch etc/users/$post_arg_register_user/work
 
             post_redirect $base_url/courses
