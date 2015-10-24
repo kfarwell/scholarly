@@ -68,7 +68,7 @@
 
 <nav class="white" role="navigation">
   <div class="nav-wrapper container">
-    <a id="logo-container" href="/courses/" class="brand-logo orange-text">%($siteTitle%)</a>
+    <a id="logo-container" href="/courses/" class="brand-logo orange-text">%($siteTitle%) <small>&beta;eta</small></a>
     <ul class="right hide-on-med-and-down">
       <li><a class="dropdown-button black-text" href="#!" data-activates="dd-types">Types</a></li>
       <li><a class="dropdown-button black-text" href="#!" data-activates="dd-years">Years</a></li>
