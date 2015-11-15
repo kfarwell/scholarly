@@ -22,8 +22,7 @@ function save_file ($file, $name, $arg){
     }
     //Move the file to the above location with said filename
     move_uploaded_file($file,$path.$file_name);
-    //Return url+filename to the user
-    header( 'Location: http://'.$_SERVER['HTTP_HOST'].'/courses/'.$_POST['course'] );
+    header( 'Location: http://'.$_SERVER['HTTP_HOST'].$_POST['board'].$_POST['course'] );
 }
 function gen_name($arg, $in){
     $chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';

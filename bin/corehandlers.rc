@@ -52,7 +52,7 @@ fn nav_tree_ext {
 }
 fn nav_tree_ext_custom {
     for(i in $*) {
-        if (! ~ $"logged_user '' || ~ $firstrun false) echo '<br /><br /><br />'
+        if ({! ~ $"logged_user '' || ~ $firstrun false} && ! ~ $req_path /user/*) echo '<br /><br /><br />'
         firstrun=false
         cat $sitedir$i | head -n 12
         echo '<a href="'`{echo $i | sed 's/\.html$//'}'" class="btn waves-effect waves-light black white-text" style="margin-top: 1em">View Student Work</a>'

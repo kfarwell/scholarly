@@ -19,14 +19,14 @@ fn uploads_init {
     if(~ $#enable_uploads 1 && ! ~ `{ls $local_path.$uploads_file_types >[2]/dev/null|wc -l} 0) {
         ll_add handlers_body_foot template apps/uploads/uploads_list.tpl
 
-        if(check_user $groups_allowed_uploads || {~ $#user_name 0 && ~ 1 $#allow_new_user_uploads $#uploads_anon_uploads}) {
+        if({check_user $groups_allowed_uploads || {~ $#user_name 0 && ~ 1 $#allow_new_user_uploads $#uploads_anon_uploads}} && {! ~ $req_path /galleries/* || ~ $user_name `{cat $sitedir$req_path.html_werc/dirdir/*/author}}) {
             ll_add handlers_body_foot template apps/uploads/foot.tpl
             if(~ $user_name `{echo $post_arg_uploads_delete | cut -d : -f 2})
                 delete_file
             if not if(~ $user_name `{echo $post_arg_uploads_watermark | cut -d : -f 2})
                 watermark_file
         }
-        if not if(~ $REQUEST_METHOD GET)
+        if not if(~ $REQUEST_METHOD GET && ! ~ $req_path /galleries/*)
             ll_add handlers_body_foot echo '<hr><p>To upload work you need to <a href="/login">login</a> first.</p>'
     }
 }

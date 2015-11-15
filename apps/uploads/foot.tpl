@@ -10,5 +10,11 @@
 
     <input type="hidden" name="user" value="%(`{get_cookie werc_user | sed 's/:.*//'}%)" />
     <input type="hidden" name="course" value="%(`{basename $local_path}%)" />
+%   if(~ $req_path /galleries/*) {
+    <input type="hidden" name="board" value="/galleries/" />
+%   }
+%   if not {
+    <input type="hidden" name="board" value="/courses/" />
+%   }
     <p><button type="submit" class="btn-large waves-effect waves-light black">Submit</button></p>
 </form>

@@ -1,13 +1,25 @@
 % if(check_user) {
 <div>
-% if(~ `{echo $lp | tr -dc '/' | wc -c} 3) echo '<h1>Add Course</h1>'
-% if not echo '<h1>Edit Course</h1>'
+%   if(~ $req_path /user/*) {
+    <h2>Add Gallery</h2>
+    <form action="/galleries/" method="POST">
+        <input type="hidden" name="user" value="%($logged_user%)">
+%   }
+%   if not {
+    <h1>Add Course</h1>
     <form action="" method="POST">
+%   }
         <p><div class="input-field">
             <input id="name" type="text" name="name" required="" class="validate" value="%(`{if(~ $#post_arg_name 1) echo -n $post_arg_name}%)">
+%           if(~ $req_path /user/*) {
+            <label for="name">Gallery name</label>
+%           }
+%           if not {
             <label for="name">Course name</label>
+%           }
         </div>
 
+%       if(! ~ $req_path /user/*) {
         <div class="input-field">
             <select name="type" required="" class="validate">
                 <option value="Fine Arts">Fine Arts</option>
@@ -56,6 +68,7 @@
             <input id="tags" type="text" name="tags" value="%(`{if(~ $#post_arg_tags 1) echo -n $post_arg_tags}%)">
             <label for="tags">Tags (comma separated)</label>
         </div></p>
+%       }
 
         <p><button type="submit" class="btn-large waves-effect waves-light black">Submit</button></p>
     </form>

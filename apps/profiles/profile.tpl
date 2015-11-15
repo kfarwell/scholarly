@@ -23,6 +23,14 @@ echo '</p>'
 echo '<ul>'
 cat $dir/work
 echo '</ul>'
+
+if(test -f etc/users/`{basename $req_path}^/galleries)
+    echo '<h2>Galleries</h2>'
+
+for(i in `{cat etc/users/`{basename $req_path}^/galleries})
+    courses=($courses /galleries/$i.html)
+
+nav_tree_ext_custom $courses
 %}
 
 % if(~ $logged_user `{basename $req_path}) {
@@ -65,4 +73,6 @@ echo '</ul>'
 
     <p><button type="submit" name="profile_submit" class="btn-large waves-effect waves-light black">Submit</button></p>
 </form>
+
+% tpl_handler `{get_lib_file dirdir/edit.tpl apps/dirdir/edit.tpl}
 % }
