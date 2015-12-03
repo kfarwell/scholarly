@@ -130,6 +130,7 @@
       <span class="right">
         <a href="/about" class="black-text">About</a>
         <a href="/privacy" class="black-text">Privacy</a>
+        <a href="https://www.youtube.com/channel/UCG3W4iUfI8Hgy9yMJO63DIg/videos" class="black-text"><img src="/img/youtube.png" style="height: 1em; display: absolute; margin-bottom: -0.15em"></a>
       </span>
     </div>
   </div>
